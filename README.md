@@ -15,6 +15,7 @@
 ![image](./images/Screen-0.png)
 
 - 1-1. AWS Elemental MediaLive & MediaStore 이중화 채널 구성화면
+    - 라이브 스트리밍 이중화 채널 구성에서 재생할 수 있는 Manifest 주소가 파이프라인 별 1개씩 생성 (A와 B 2개)
 
 - 1-2. AWS Elemental MediaStore를 미디어 스토리지로 사용한 구성 시 Fail-Over?
     - Fail-Over를 위해 Redundant Manifest 설정과 Puase Output이란 설정 활성화가 필요
@@ -51,6 +52,8 @@
 #### [2] AWS MediaLive & MediaPackage Fail-Over 동작 방식 (상세)
 
 - 2-1. AWS Elemental MediaLive & MediaPackage 이중화 채널 구성화면
+    - 라이브 스트리밍 이중화 채널 구성에서 재생할 수 있는 Manifest 재생 주소가 1개만 생성
+    - MediaStore 구성과는 다르게 파이프라인의 Fail-Over 전환이 내부적으로 처리되기에 재생 주소는 1개만 생성
 
 - 2-2. AWS Elemental MediaPackage를 미디어 스토리지로 사용한 구성 시 Fail-Over?
     - Fail-Over를 위해 Puase Output이란 설정 활성화만 필요
