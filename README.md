@@ -12,7 +12,7 @@
 
 #### [1] AWS MediaLive & MediaStore Fail-Over 동작 방식 (상세)
 
-![image](./images/Screen-0.png)
+- ![image](./images/Screen-0.png)
 
 - 1-1. AWS Elemental MediaLive & MediaStore 이중화 채널 구성화면
     - 라이브 스트리밍 이중화 채널 구성에서 재생할 수 있는 Manifest 주소가 파이프라인 별 1개씩 생성 (A와 B 2개)
