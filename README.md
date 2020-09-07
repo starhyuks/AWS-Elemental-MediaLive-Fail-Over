@@ -37,6 +37,7 @@
 -  1-6. 채널의 파이프라인이 A 와 B 파이프라인에 해당하는 두 곳의 Sub Manifest를 바라보게 될 경우 동작 방식
     - 파이프라인 A의 송출이 끊어져도 A의 Master Manifest로 B의 Sub Manifest 주소를 불러와 재생되는 방식
 
+<br>
 
 ![image](./images/Capture-4.png)
 
