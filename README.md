@@ -20,14 +20,14 @@
 - 1-2. AWS Elemental MediaStore 구성에서의 Fail-Over 설정
     - Fail-Over 동작을 위해 MediaLive의 Redundant Manifest & Puase Output 설정 필요
         - Redundant Manifest : 각 파이프라인의 Sub Manifest를 중복으로 저장
-        - Puase Output : 파이프라인으로의 입력 스트림이 끊기면 출력 스트림을 중단
+        - Puase Output : 파이프라인으로의 입력 스트림이 중단되면 출력 스트림 또한 중단
     - Puase Output 설정은 [Input Loss Action]에서 가능하며 선택 가능한 설정 값은 2종류
         - PAUSE_OUTPUT : 이중화 채널(Standard)에서 사용되며 입력 스트림이 끊어지면 해당 파이프라인을 중단
         - EMIT_OUTPUT : 싱글 채널(Single)에서 사용되며 입력 스트림이 끊어져도 블랙 프레임을 생성하여 스트림을 전달
 
 - 1-3. AWS Elemental MediaLive의 Redundant Manifest DISABLED(비활성화) 동작 방식
     - 채널의 파이프라인 A와 B는 각각의 파이프라인에 해당하는 Sub Manifest만 보유
-        - A의 Master Manifest 주소로 재생하고 있을 때, A 파이프라인에 송출 신호가 끊기면 장애가 발생
+        - A의 Master Manifest 주소로 재생하고 있을 때, A 파이프라인에 입력 신호가 중단되면 장애가 발생        
         - A의 Master Manifest 주소는 재생 불가, B의 Master Manifest 주소로 전환해 주는 방안이 필요
     
 <br><br>
@@ -35,17 +35,17 @@
 ![image](./images/Capture-2.png)
 
 - 1-5. AWS Elemental MediaLive의 Redundant Manifest ENABLE(활성화) 동작 방식
-    - 채널의 파이프라인 A와 B Master Manifest에서 각 파이프라인에 해당하는 두 곳의 Sub Manifest를 모두 보유
+    - 채널 파이프라인 A와 B의 Master Manifest에서 각 파이프라인에 해당하는 두 곳의 Sub Manifest를 모두 보유
     
 
 <br>
 
 ![image](./images/Capture-3.png)
 
--  1-6. 파이프라인 A와 B에서 두 곳의 Sub Manifest를 모두 보유하게 될 경우 동작 방식
-    - A 파이프라인에 송출 신호가 끊기면 A Master Manifest에서 A의 Sub Manifest가 삭제
-        - A Master Manifest 주소로 재생하고 있다고 가정
-        - A 파이프라인에 송출 신호가 끊기면 남아 있는 B의 Sub Manifest가 재생
+-  1-6. 채널 파이프라인 A와 B가 두 곳의 Sub Manifest를 모두 보유하게 될 경우 동작 방식
+    - A 파이프라인에 입력 신호가 중단되면 A Master Manifest에서 A의 Sub Manifest가 삭제
+        - A Master Manifest 주소로 동영상을 재생하고 있다고 가정하에
+        - A 파이프라인에 입력 신호가 중단되면 입력 신호가 입수되어 처리되고 있는 B의 Sub Manifest로 재생
 
 <br>
 
