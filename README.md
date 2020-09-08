@@ -13,42 +13,43 @@
 #### [1] AWS MediaLive & MediaStore Fail-Over 동작 방식 (상세)
 
 - 1-1. AWS Elemental MediaLive & MediaStore 이중화 채널 구성화면
-    - 라이브 스트리밍 이중화 채널 구성에서 재생할 수 있는 Manifest 주소가 파이프라인 별 1개씩 생성 (A와 B 2개)
+    - 아래와 같은 이중화 채널 구성에서는 재생할 수 있는 Manifest 주소가 파이프라인 별 1개씩 생성 (A와 B 2개)
 
 ![image](./images/Capture-1.png)
 
-- 1-2. AWS Elemental MediaStore를 미디어 스토리지로 사용한 구성 시 Fail-Over?
-    - Fail-Over를 위해 MediaLive에서 Redundant Manifest 설정과 Puase Output이란 설정 활성화가 필요
+- 1-2. AWS Elemental MediaStore를 미디어 스토리지로 사용한 구성을 위한 Fail-Over?
+    - Fail-Over가 동작 하기 위해서는 MediaLive의 Redundant Manifest 설정과 Puase Output이란 설정 활성화가 필요
 
-- 1-3. AWS Elemental MediaLive에서 Redundant Manifest을 DISABLED(비활성화) 할 경우?
-    - 위 화면과 같이 채널의 파이프라인은 A 또는 B 파이프라인 각각에 해당하는 자신의 Sub Manifest만 보유
-    - A의 Manifest 주소로 재생하고 있을 때 A 파이프라인에 송출 신호가 끊기면 장애가 발생
-    - B의 Manifest 주소로 수동으로 전환해 주어야 함
+- 1-3. AWS Elemental MediaLive의 Redundant Manifest DISABLED(비활성화) 동작 방식
+    - 채널의 파이프라인은 A와 B는 자기의 파이프라인 해당하는 해상도의 Sub Manifest만 보유
+    - A의 Manifest 주소로 재생하고 있을 때, A 파이프라인에 송출 신호가 끊기면 장애가 발생
+    - B의 Manifest 주소로 수동으로 전환해 주는 방안이 필요
     
 
 <br>
 
 ![image](./images/Capture-2.png)
 
-- 1-5. AWS Elemental MediaLive에서 Redundant Manifest을 ENABLE(활성화) 할 경우?
-    - 위 화면과 같이 채널의 파이프라인 A와 B는 각 파이프라인에 해당하는 두 곳의 Sub Manifest를 모두 보유
+- 1-5. AWS Elemental MediaLive의 Redundant Manifest ENABLE(활성화) 동작 방식
+    - 채널의 파이프라인 A와 B는 각 파이프라인에 해당하는 두 곳의 Sub Manifest를 모두 보유
+    
 
 <br>
 
 ![image](./images/Capture-3.png)
 
--  1-6. 파이프라인 A와 B가 각 파이프라인에 해당하는 두 곳의 Sub Manifest를 모두 보유하게 될 경우 동작 방식
-    - A의 Manifest 주소로 재생하고 있을 때 A 파이프라인에 송출 신호가 끊기면 B의 Sub Manifest로 재생
+-  1-6. 파이프라인 A와 B는 각 파이프라인에 해당하는 두 곳의 Sub Manifest를 모두 보유하게 될 경우 동작 방식
+    - A의 Manifest 주소로 재생하고 있을 때, A 파이프라인에 송출 신호가 끊기면 B의 Sub Manifest로 재생
     - A의 Manifest 주소를 살펴보면 A의 Sub Manifest가 삭제되고, B의 Sub Manifest만 남게 됨.
-    - Redundant Manifest 설정 정리 : Manifest를 활용한 MediaLive의 Fail-Over 방식
+    - Redundant Manifest 설정 정리 : MediaLive의 이중화 채널 구성 간 Manifest를 활용한 Fail-Over 방식
 
 <br>
 
 ![image](./images/Capture-4.png)
 
-- 1-7. 해당 동작이 가능하기 위해서는 AWS Elemental MediaLive에서 위와 같은 설정이 필요
+- 1-7. 해당 동작이 가능하기 위해서는 AWS Elemental MediaLive에서 다음과 같은 설정이 필요
 
-    - [HLS OutputGroup] > [Manifest and Segments] > [Redundant Manifest] > ENABLED
+    - [HLS OutputGroup] > [Manifest and Segments] > [Redundant Manifest] > 'ENABLED'
     - [HLS OutputGroup] > [HLS settings] > [Input Loss Action] PAUSE_OUTPUT
 
 
