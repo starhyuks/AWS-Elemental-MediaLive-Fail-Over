@@ -26,7 +26,7 @@
         - EMIT_OUTPUT : 싱글 채널(Single)에서 사용되며 입력 스트림이 끊어져도 블랙 프레임을 생성하여 스트림을 전달
 
 - 1-3. AWS Elemental MediaLive의 Redundant Manifest DISABLED(비활성화) 동작 방식
-    - 채널의 파이프라인 A와 B는 자기의 파이프라인 해당하는 해상도의 Sub Manifest만 보유
+    - 채널의 파이프라인 A와 B는 자신의 파이프라인에 해당하는 해상도의 Sub Manifest만 보유
         - A의 Master Manifest 주소로 재생하고 있을 때, A 파이프라인에 송출 신호가 끊기면 장애가 발생
         - A의 Master Manifest 주소는 재생 불가, B의 Master Manifest 주소로 전환해 주는 방안이 필요
     
@@ -35,7 +35,7 @@
 ![image](./images/Capture-2.png)
 
 - 1-5. AWS Elemental MediaLive의 Redundant Manifest ENABLE(활성화) 동작 방식
-    - 채널의 파이프라인 A와 B에서 각 파이프라인에 해당하는 두 곳의 Sub Manifest를 모두 보유
+    - 채널의 파이프라인 A와 B Master Manifest에서 각 파이프라인에 해당하는 두 곳의 Sub Manifest를 모두 보유
     
 
 <br>
