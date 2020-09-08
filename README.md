@@ -19,13 +19,13 @@
 
 - 1-2. AWS Elemental MediaStore를 미디어 스토리지로 사용한 구성을 위한 Fail-Over 설정
     - Fail-Over 동작을 위해 MediaLive의 Redundant Manifest & Puase Output 설정 필요
-    - Redundant Manifest : 각 파이프라인의 Sub Manifest를 중복으로 저장
-    - Puase Output : 파이프라인으로의 입력 스트림이 끊기면 출력 스트림을 중단
+        - Redundant Manifest : 각 파이프라인의 Sub Manifest를 중복으로 저장
+        - Puase Output : 파이프라인으로의 입력 스트림이 끊기면 출력 스트림을 중단
 
 - 1-3. AWS Elemental MediaLive의 Redundant Manifest DISABLED(비활성화) 동작 방식
     - 채널의 파이프라인 A와 B는 자기의 파이프라인 해당하는 해상도의 Sub Manifest만 보유
-    - A의 Master Manifest 주소로 재생하고 있을 때, A 파이프라인에 송출 신호가 끊기면 장애가 발생
-    - A의 Master Manifest 주소는 재생 불가, B의 Master Manifest 주소로 전환해 주는 방안이 필요
+        - A의 Master Manifest 주소로 재생하고 있을 때, A 파이프라인에 송출 신호가 끊기면 장애가 발생
+        - A의 Master Manifest 주소는 재생 불가, B의 Master Manifest 주소로 전환해 주는 방안이 필요
     
 <br>
 
@@ -41,14 +41,14 @@
 
 -  1-6. 파이프라인 A와 B에서 두 곳의 Sub Manifest를 모두 보유하게 될 경우 동작 방식
     - A 파이프라인에 송출 신호가 끊기면 A Master Manifest에서 A의 Sub Manifest가 삭제
-    - A의 Master Manifest 주소로 재생하고 있다고 가정하면 A 파이프라인에 송출 신호가 끊기면 남아 있는 B의 Sub Manifest가 재생
+        - A Master Manifest 주소로 재생하고 있다고 가정
+        - A 파이프라인에 송출 신호가 끊기면 남아 있는 B의 Sub Manifest가 재생
 
 <br>
 
 ![image](./images/Capture-4.png)
 
 - 1-7. 해당 동작이 가능하기 위해서는 AWS Elemental MediaLive에서 다음과 같은 설정이 필요
-
     - [HLS OutputGroup] > [Manifest and Segments] > [Redundant Manifest] > ENABLED
     - [HLS OutputGroup] > [HLS settings] > [Input Loss Action] PAUSE_OUTPUT
 
