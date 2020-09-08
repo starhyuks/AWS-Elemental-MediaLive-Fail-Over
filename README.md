@@ -82,7 +82,7 @@
 
 - 2-3. AWS Elemental MediaPackage를 미디어 스토리지로 사용한 구성 시 Fail-Over 동작 방식
     - 즉, 파이프라인 A의 송출이 끊어져도 MediaPackage에서 사용 가능한 활성 스트림을 자동으로 전환하는 방식
-    - MediaPackage 내부적으로 Fail-Over 전환이 발생하기에 사용자가 재생하는 Manifest 재생 주소는 1개
+    - MediaPackage 내부적으로 Fail-Over 전환이 발생하기에 사용자는 엔드포인트 URL 전환에 대한 고려가 필요 없음
 
 <br>
 
