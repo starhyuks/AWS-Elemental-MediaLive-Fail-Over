@@ -35,7 +35,7 @@
     - 채널의 파이프라인 A와 B에서 각 파이프라인에 해당하는 두 곳의 Sub Manifest를 모두 보유
     
 
-<br><br>
+<br>
 
 ![image](./images/Capture-3.png)
 
@@ -44,7 +44,7 @@
         - A Master Manifest 주소로 재생하고 있다고 가정
         - A 파이프라인에 송출 신호가 끊기면 남아 있는 B의 Sub Manifest가 재생
 
-<br><br>
+<br>
 
 ![image](./images/Capture-4.png)
 
@@ -53,7 +53,7 @@
     - [HLS OutputGroup] > [HLS settings] > [Input Loss Action] PAUSE_OUTPUT
 
 
-<br><br>
+<br>
 
 * * *
 
@@ -76,7 +76,7 @@
 
 - MediaLive에서 A 파이프라인의 스트림이 입수되지 않음을 알게 된 MediaPackage는 활성 스트림을 B로 전환
 
-<br><br>
+<br>
 
 ![image](./images/Capture-7.png)
 
@@ -84,7 +84,7 @@
     - 즉, 파이프라인 A의 송출이 끊어져도 MediaPackage에서 사용 가능한 활성 스트림을 자동으로 전환하는 방식
     - MediaPackage 내부적으로 Fail-Over 전환이 발생하기에 사용자는 엔드포인트 URL 전환에 대한 고려가 필요 없음
 
-<br><br>
+<br>
 
 ![image](./images/Capture-8.png)
 
@@ -92,7 +92,7 @@
 
     - [HLS OutputGroup] > [HLS settings] > [Input Loss Action] > PAUSE_OUTPUT
 
-<br><br>
+<br>
 
 * * *
 
