@@ -27,7 +27,7 @@
         - A의 Master Manifest 주소로 재생하고 있을 때, A 파이프라인에 송출 신호가 끊기면 장애가 발생
         - A의 Master Manifest 주소는 재생 불가, B의 Master Manifest 주소로 전환해 주는 방안이 필요
     
-<br>
+<br><br>
 
 ![image](./images/Capture-2.png)
 
@@ -35,7 +35,7 @@
     - 채널의 파이프라인 A와 B에서 각 파이프라인에 해당하는 두 곳의 Sub Manifest를 모두 보유
     
 
-<br>
+<br><br>
 
 ![image](./images/Capture-3.png)
 
@@ -44,7 +44,7 @@
         - A Master Manifest 주소로 재생하고 있다고 가정
         - A 파이프라인에 송출 신호가 끊기면 남아 있는 B의 Sub Manifest가 재생
 
-<br>
+<br><br>
 
 ![image](./images/Capture-4.png)
 
@@ -53,7 +53,7 @@
     - [HLS OutputGroup] > [HLS settings] > [Input Loss Action] PAUSE_OUTPUT
 
 
-<br>
+<br><br>
 
 * * *
 
@@ -70,13 +70,13 @@
 
 - MediaLive로의 A 파이프라인이 송출이 중단되면 PAUSE_OUTPUT 동작으로 MediaPackage에 더 이상 스트림을 보내지 않음
 
-<br>
+<br><br>
 
 ![image](./images/Capture-6.png)
 
 - MediaLive에서 A 파이프라인의 스트림이 입수되지 않음을 알게 된 MediaPackage는 활성 스트림을 B로 전환
 
-<br>
+<br><br>
 
 ![image](./images/Capture-7.png)
 
@@ -84,7 +84,7 @@
     - 즉, 파이프라인 A의 송출이 끊어져도 MediaPackage에서 사용 가능한 활성 스트림을 자동으로 전환하는 방식
     - MediaPackage 내부적으로 Fail-Over 전환이 발생하기에 사용자는 엔드포인트 URL 전환에 대한 고려가 필요 없음
 
-<br>
+<br><br>
 
 ![image](./images/Capture-8.png)
 
@@ -92,7 +92,7 @@
 
     - [HLS OutputGroup] > [HLS settings] > [Input Loss Action] > PAUSE_OUTPUT
 
-<br>
+<br><br>
 
 * * *
 
@@ -103,11 +103,11 @@
 - 실제 라이브 스트리밍 파이프라인이 MediaPackage에서 Fail-Over 되는 예제를 살펴볼 수 있다.
 https://www.youtube.com/watch?time_continue=48&v=5eBkZInd8kQ&feature=emb_logo
 
-<br>
+<br><br>
 
 ![image](./images/Capture-10.png)
 
 - 원활한 MediaPackage의 Fail-Over를 위해 MediaLive에서는 위와 같은 설정이 필요할 수 있다.
 https://aws.amazon.com/ko/blogs/media/part1-how-to-set-up-a-resilient-end-to-end-live-workflow/
 
-<br>
+<br><br>
