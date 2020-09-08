@@ -22,8 +22,8 @@
         - Redundant Manifest : 각 파이프라인의 Sub Manifest를 중복으로 저장
         - Puase Output : 파이프라인으로의 입력 스트림이 끊기면 출력 스트림을 중단
     - Puase Output 설정은 [Input Loss Action]에서 가능하며 선택 가능한 설정 값은 2종류
-        - PAUSE_OUTPUT : 주로 이중화 채널(Standard)에서 사용되며 입력 스트림이 끊어지면 해당 파이프라인을 중단
-        - EMIT_OUTPUT : 주로 싱글 채널(Single)에서 사용되며 입력 스트림이 끊어져도 블랙 프레임을 생성하여 스트림을 전달
+        - PAUSE_OUTPUT : 이중화 채널(Standard)에서 사용되며 입력 스트림이 끊어지면 해당 파이프라인을 중단
+        - EMIT_OUTPUT : 싱글 채널(Single)에서 사용되며 입력 스트림이 끊어져도 블랙 프레임을 생성하여 스트림을 전달
 
 - 1-3. AWS Elemental MediaLive의 Redundant Manifest DISABLED(비활성화) 동작 방식
     - 채널의 파이프라인 A와 B는 자기의 파이프라인 해당하는 해상도의 Sub Manifest만 보유
