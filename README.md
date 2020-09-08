@@ -18,7 +18,7 @@
 ![image](./images/Capture-1.png)
 
 - 1-2. AWS Elemental MediaStore를 미디어 스토리지로 사용한 구성을 위한 Fail-Over 설정
-    - Fail-Over가 동작을 위해 MediaLive의 Redundant Manifest & Puase Output 설정 필요
+    - Fail-Over 동작을 위해 MediaLive의 Redundant Manifest & Puase Output 설정 필요
     - Redundant Manifest : 각 파이프라인의 Sub Manifest를 중복으로 저장
     - Puase Output : 파이프라인으로의 입력 스트림이 끊기면 출력 스트림을 중단
 
@@ -90,7 +90,7 @@
 
 - 2-4. 해당 동작이 가능하기 위해서는 AWS Elemental MediaLive에서 위와 같은 설정이 필요
 
-    - [HLS OutputGroup] > [HLS settings] > [Input Loss Action] PAUSE_OUTPUT
+    - [HLS OutputGroup] > [HLS settings] > [Input Loss Action] > PAUSE_OUTPUT
 
 <br>
 
