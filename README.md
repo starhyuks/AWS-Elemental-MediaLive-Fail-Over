@@ -13,34 +13,35 @@
 #### [1] AWS MediaLive & MediaStore Fail-Over 동작 방식 (상세)
 
 - 1-1. AWS Elemental MediaLive & MediaStore 이중화 채널 구성화면
-    - 아래와 같은 이중화 채널 구성에서는 재생할 수 있는 Manifest 주소가 파이프라인 별 1개씩 생성 (A와 B 2개)
+    - 아래와 같은 이중화 채널 구성에서는 재생할 수 있는 Master Manifest 주소가 파이프라인 별 1개씩 생성 (A와 B 2개)
 
 ![image](./images/Capture-1.png)
 
-- 1-2. AWS Elemental MediaStore를 미디어 스토리지로 사용한 구성을 위한 Fail-Over?
-    - Fail-Over가 동작 하기 위해서는 MediaLive의 Redundant Manifest 설정과 Puase Output이란 설정 활성화가 필요
+- 1-2. AWS Elemental MediaStore를 미디어 스토리지로 사용한 구성을 위한 Fail-Over 설정
+    - Fail-Over가 동작 하기 위해서 MediaLive의 Redundant Manifest 설정과 Puase Output이란 설정 활성화가 필요
+    - Redundant Manifest : 각 파이프라인의 Sub Manifest를 중복으로 저장
+    - Puase Output : 파이프라인으로의 입력 스트림이 끊기면 출력 스트림을 중단
 
 - 1-3. AWS Elemental MediaLive의 Redundant Manifest DISABLED(비활성화) 동작 방식
-    - 채널의 파이프라인은 A와 B는 자기의 파이프라인 해당하는 해상도의 Sub Manifest만 보유
-    - A의 Manifest 주소로 재생하고 있을 때, A 파이프라인에 송출 신호가 끊기면 장애가 발생
-    - B의 Manifest 주소로 수동으로 전환해 주는 방안이 필요
+    - 채널의 파이프라인 A와 B는 자기의 파이프라인 해당하는 해상도의 Sub Manifest만 보유
+    - A의 Master Manifest 주소로 재생하고 있을 때, A 파이프라인에 송출 신호가 끊기면 장애가 발생
+    - A의 Master Manifest 주소는 재생 불가, B의 Master Manifest 주소로 전환해 주는 방안이 필요
     
-
 <br>
 
 ![image](./images/Capture-2.png)
 
 - 1-5. AWS Elemental MediaLive의 Redundant Manifest ENABLE(활성화) 동작 방식
-    - 채널의 파이프라인 A와 B는 각 파이프라인에 해당하는 두 곳의 Sub Manifest를 모두 보유
+    - 채널의 파이프라인 A와 B에서 각 파이프라인에 해당하는 두 곳의 Sub Manifest를 모두 보유
     
 
 <br>
 
 ![image](./images/Capture-3.png)
 
--  1-6. 파이프라인 A와 B는 각 파이프라인에 해당하는 두 곳의 Sub Manifest를 모두 보유하게 될 경우 동작 방식
-    - A의 Manifest 주소로 재생하고 있을 때, A 파이프라인에 송출 신호가 끊기면 B의 Sub Manifest로 재생
-    - A의 Manifest 주소를 살펴보면 A의 Sub Manifest가 삭제되고, B의 Sub Manifest만 남게 됨.
+-  1-6. 파이프라인 A와 B에서 두 곳의 Sub Manifest를 모두 보유하게 될 경우 동작 방식
+    - A의 Master Manifest 주소로 재생하고 있을 때, A 파이프라인에 송출 신호가 끊기면 B의 Sub Manifest로 재생
+    - A 파이프라인에 송출 신호가 끊기면 A Master Manifest에서 Sub Manifest가 삭제되어 남아 있는 B의 Sub Manifest로 재생되는 방식
     - Redundant Manifest 설정 정리 : MediaLive의 이중화 채널 구성 간 Manifest를 활용한 Fail-Over 방식
 
 <br>
