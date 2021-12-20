@@ -100,6 +100,9 @@
 
 <br>
 
+- 원활한 MediaLive의 Fail-Over를 위해 MediaSotre의 (d. Set up object lifecycle policy) 설정이 추가로 필요하다.
+https://aws.amazon.com/ko/blogs/media/build-a-reliable-hls-live-channel-with-aws-elemental-mediastore/
+
 * * *
 
  #### AWS MediaLive & MediaPackage Fail-Over 동작 방식 (참고 사이트)   
