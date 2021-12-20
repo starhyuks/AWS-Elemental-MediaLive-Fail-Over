@@ -56,6 +56,9 @@
     - [HLS OutputGroup] > [HLS settings] > [Input Loss Action] > PAUSE_OUTPUT
 
 
+- 원활한 MediaLive의 Fail-Over를 위해 MediaSotre의 (d. Set up object lifecycle policy) 설정이 추가로 필요하다.
+https://aws.amazon.com/ko/blogs/media/build-a-reliable-hls-live-channel-with-aws-elemental-mediastore/
+
 <br>
 
 * * *
@@ -100,8 +103,6 @@
 
 <br>
 
-- 원활한 MediaLive의 Fail-Over를 위해 MediaSotre의 (d. Set up object lifecycle policy) 설정이 추가로 필요하다.
-https://aws.amazon.com/ko/blogs/media/build-a-reliable-hls-live-channel-with-aws-elemental-mediastore/
 
 * * *
 
